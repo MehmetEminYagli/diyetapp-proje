@@ -2,6 +2,7 @@ package com.mehmet.diyetuygulamasi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ import com.mehmet.diyetuygulamasi2.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     EditText editboy, editkilo , edityas;
-    Button hesaplabtn;
+    Button hesaplabtn , girisbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         editkilo = binding.editTextKilo;
         edityas = binding.editTextYas;
         hesaplabtn = binding.buttonhesapla;
+        girisbutton = binding.girisbtn;
 
         hesaplabtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 }else if (hesaplama <30){
                     Toast.makeText(MainActivity.this, "İdeal Kilonun Çok Üzeri", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        girisbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  intent = new Intent(MainActivity.this,accountLoginSignup.class);
+                startActivity(intent);
             }
         });
     }

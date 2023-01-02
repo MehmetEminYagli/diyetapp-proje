@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class accountLoginSignup extends AppCompatActivity {
 
-    String email = "mehmet@gmail.com";
-    String password = "123";
+
+    EditText email,password;
+    Button girisbtn;
     // Sistemde kayıtlı 5 farklı e-posta ve şifre
     String[] emails = {"mehmet@gmail.com", "mehmet2@gmail.com", "deneme@gmail.com", "Emin@gmail.com", "user@user"};
     String[] passwords = {"sifre", "mehmet2", "deneme", "emin123", "password"};
-
-    Button girisbtn;
-
+    boolean loginSuccess = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +25,16 @@ public class accountLoginSignup extends AppCompatActivity {
         setContentView(R.layout.activity_account_login_signup);
 
         girisbtn = findViewById(R.id.button);
+        email = findViewById(R.id.enterEmail);
+        password = findViewById(R.id.enterPasswords);
 
         girisbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean loginSuccess = false;
-
                 // Girilen e-posta ve şifre ile sistemde kayıtlı olanlar karşılaştırılıyor
                 for (int i = 0; i < emails.length; i++) {
-                    if (email.equals(emails[i]) && password.equals(passwords[i])) {
+                    if (email.getText().toString().equals(emails[i]) && password.getText().toString().equals(passwords[i])) {
                         loginSuccess = true;
-                        break;
                     }
                 }
 
